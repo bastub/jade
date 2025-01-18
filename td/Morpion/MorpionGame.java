@@ -59,26 +59,4 @@ public class MorpionGame implements Serializable {
         }
         return false;
     }
-
-    public static void main(String[] args) throws IOException {
-        MorpionGame M = new MorpionGame();
-        System.out.println(M);
-        int id = 1;
-        while(true) {
-            System.out.println(M);
-            // Enter data using BufferReader
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(System.in));
-
-            // Reading data using readLine
-            String coos = reader.readLine();
-            Boolean played = false;
-            while (!played) {
-                System.out.println("Your time to shine, Player " + id + "!");
-                played = M.play(coos, id);
-            }
-            id++;
-        }
-
-    }
 }
