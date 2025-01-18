@@ -1,0 +1,23 @@
+@startuml
+actor Teacher_1 #red
+actor Teacher_2 #red
+actor Teacher_3 #red
+actor Secretary #green
+Secretary -> Secretary: check room, students and teachers constraints
+Secretary -> Teacher_1: send timetable
+Secretary -> Teacher_2: send timetable
+Secretary -> Teacher_3: send timetable
+loop until Teachers are satisfied
+    Teacher_1 --> Secretary: refuse timetable
+    Teacher_2 --> Secretary: refuse timetable
+    Teacher_3 --> Secretary: refuse timetable
+    Secretary -> Secretary: check room, students and teachers constraints
+    Secretary -> Teacher_1: send timetable
+    Secretary -> Teacher_2: send timetable
+    Secretary -> Teacher_3: send timetable
+end
+Teacher_1 -> Secretary: accept timetable
+Teacher_2 -> Secretary: accept timetable
+Teacher_3 -> Secretary: accept timetable
+Secretary -> Secretary: display timetable
+@enduml

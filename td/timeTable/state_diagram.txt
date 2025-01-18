@@ -1,0 +1,33 @@
+@startuml
+hide empty description
+
+state Loop <<loop>>{
+state entry <<entryPoint>>
+state ConstraintsChecked
+entry --> ConstraintsChecked : Secretary check constraints
+TimetableRefused --> ConstraintsChecked : Secretary check constraints
+ConstraintsChecked --> TimetableSent : Secretary send timetable
+state TimetableReceived <<choice>>
+TimetableSent --> TimetableReceived : Teachers receive timetable
+TimetableReceived --> TimetableRefused : A teacher refuse timetable
+TimetableReceived --> exit <<exitPoint>>
+TimetableRefused --> ConstraintsChecked
+}
+
+state fork1 <<fork>>
+[*] --> fork1
+fork1 --> SecretaryCreated : create Secretary
+SecretaryCreated --> entry : Secretary check constraints
+fork1 --> TeachersCreated : create Teachers
+
+exit --> TimetableAccepted : Teachers are satisfied
+TimetableAccepted --> TimetableDisplayed : Secretary display timetable
+TimetableDisplayed --> [*] : end
+
+note right of Loop
+    The Secretary checks the constraints
+    and sends the timetable to the teachers
+    until all teachers are satisfied
+end note
+
+@enduml

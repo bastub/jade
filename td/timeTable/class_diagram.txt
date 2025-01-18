@@ -1,0 +1,20 @@
+@startuml
+class Teacher {
+    +constraints: int[][][]
+    +acceptTimetable()
+    +refuseTimetable()
+}
+class Secretary {
+    +teacher_constraints: int[][][]
+    +room_constraints: int[][][]
+    +student_constraints: int[][][]
+    +checkConstraints()
+    +sendTimetable()
+    +displayTimetable()
+}
+class Main {
+    +main()
+}
+Teacher -- Main
+Secretary -- Main
+@enduml

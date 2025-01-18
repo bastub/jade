@@ -8,7 +8,6 @@
 .idea/modules.xml
 .idea/uiDesigner.xml
 .idea/vcs.xml
-*.txt
 *.iml
 out/production/jade/.idea/checkstyle-idea.xml
 out/production/jade/.idea/csv-plugin.xml
